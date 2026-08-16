@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Here you can find some info about selected movies.</p>
+</div>
+<div class="find-movie">
+    <form  method="post">
+        <input type="text" name="movie" placeholder="Movie..."/>
+        <button type="submit">Find</button>
+    </form>
+</div>
+@if (Model != null)
+{
+    @if (Model.Response == "False")
+    {
+        <p class="error">@Model.Error</p>
+    }
+    else 
+    {
+        <div class="movie-card">
+            <h2>@Model.Title</h2>
+            <h3>@Model.Year</h3>
+            <img src="@Model.Poster" alt="Poster" />
+            <p><strong>Rating:</strong> @Model.Rating</p>
+            <p><strong>Language:</strong> @Model.Language</p>
+            <p><strong>Actors:</strong> @Model.Actors</p>
+            <p><strong>Description:</strong> @Model.Plot</p>
+        </div>
+    }
+}
